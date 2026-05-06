@@ -50,5 +50,6 @@ None
 
 ## Session Continuity
 
-Last action: Roadmap and state files written.
+Last action: Phase 1 context gathered — .planning/phases/01-calculation-engine/01-CONTEXT.md written (2026-05-06).
+Resume file: .planning/phases/01-calculation-engine/01-CONTEXT.md
 Next action: Run /gsd-plan-phase 1 to break Phase 1 into executable plans.
