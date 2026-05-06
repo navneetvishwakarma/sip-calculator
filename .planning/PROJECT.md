@@ -30,32 +30,37 @@ A retail investor can enter their monthly amount, rate of return, and duration a
 
 ### Out of Scope
 
-- PDF export / shareable link — not requested, deferred
-- Admin dashboard / usage analytics — not requested, deferred
-- Mutual fund data integration (live NAV, fund search) — adds backend complexity, deferred
-- Mobile app — web-first for now
+- PDF export — deferred to v2
+- Admin dashboard / usage analytics — deferred to v2
+- Mutual fund data integration (live NAV, fund search) — adds vendor dependency, deferred
+- React Native mobile app — planned for v2; architecture supports it via monorepo `packages/core`
 
 ## Context
 
 - Target audience: Indian retail investors, likely familiar with SIP as a concept but may not know the math
 - Inflation-adjusted output matters for this audience (rupee value erodes fast at Indian inflation rates ~6%)
 - No existing codebase; greenfield
-- No tech stack constraint — recommend React + Vite (frontend), Node.js + Express + PostgreSQL (backend) for a clean, deployable full-stack setup
+- React Native mobile app planned for v2 — architecture must keep code-sharing in mind from day one
 
 ## Constraints
 
 - **Auth**: User accounts required for saved scenarios; public calculator must work without login
-- **Deployment**: Needs a backend (not static-only)
-- **Scope**: v1 focuses on calculation and visualization; social/sharing features deferred
+- **Deployment**: Needs a backend (not static-only); Next.js route handlers cover all v1 backend needs
+- **Mobile**: React Native (Expo) for v2 mobile app — calculation engine must have zero DOM/browser dependencies so it can be shared via monorepo
+- **Scope**: v1 is web only; social/sharing features deferred
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| React + Vite frontend | No framework preference; Vite gives fast DX, React has the charting ecosystem | — Pending |
-| Node.js + Express backend | Lightweight, pairs well with React stack, easy to deploy | — Pending |
-| PostgreSQL for persistence | Relational fits saved scenarios + user accounts; no exotic data shapes | — Pending |
+| Next.js 15 (App Router) over Vite + Express | Route handlers replace a separate Express backend; SSR available if needed; one deployment unit | — Pending |
+| Turborepo monorepo from day one | Calculation engine in `packages/core` — shared between Next.js web (v1) and React Native mobile (v2) with zero rework | — Pending |
+| React Native (Expo) for mobile | User preference; shares calc engine from monorepo; Expo managed workflow handles iOS/Android | — Pending |
+| Recharts for web charts | Declarative, React-native SVG rendering; fights React less than Chart.js Canvas approach | — Pending |
+| Drizzle ORM + Neon (serverless Postgres) | Lightweight, TypeScript-first, pairs well with Next.js serverless; Neon scales to zero | — Pending |
+| Better Auth for authentication | Correct post-Lucia-deprecation choice; Lucia was officially deprecated in 2025 | — Pending |
 | Public calculator, gated saves | Core value must work without login; accounts unlock persistence | — Pending |
+| `packages/core` has zero DOM dependencies | Hard boundary: no `window`, `document`, or React imports in calc engine — required for RN sharing | — Pending |
 
 ## Evolution
 
