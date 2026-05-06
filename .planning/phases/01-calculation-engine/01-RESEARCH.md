@@ -700,22 +700,25 @@ Note: `test` does NOT depend on `^build` here. `packages/core` tests run against
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **SWP drawdown chart — structural tension**
    What we know: CONTEXT.md (D-02) specifies `SWPResult` has `monthsToDepletion: number | "perpetual"` and no `yearlySnapshots`. Phase 3 (ROADMAP) says the SWP chart shows a "drawdown curve," which requires corpus-by-year data.
    What's unclear: Should SWPResult emit `yearlySnapshots` (corpus at end of each year), or does Phase 3 recompute from the SWP inputs?
    Recommendation: Add `yearlySnapshots?: YearlySnapshot[]` to `SWPResultSchema` now. Re-adding it in Phase 3 would require a schema migration. The SWP loop already tracks corpus year-by-year, so the data is free.
+   RESOLVED: Add `yearlySnapshots?: YearlySnapshot[]` as optional field to `SWPResult` and `SWPResultSchema` in Phase 1. Plan 01-05 implements this.
 
 2. **INR formatter threshold: 1 Lakh vs 10 Lakh**
    What we know: CONTEXT.md says `₹12.5 Lakh`, `₹2.3 Crore` — no sub-Lakh example given.
    What's unclear: Should ₹9,99,999 display as "₹9,99,999" (raw) or "₹10 Lakh" (rounded)?
    Recommendation: Use 10-Lakh threshold (values below ₹10L display as Indian-grouped raw) to avoid the rounding artifact. Flag for user confirmation.
+   RESOLVED: Use 10-Lakh threshold (`TEN_LAKH = 1_000_000`). Values < ₹10L show raw Indian-grouped format; ≥ ₹10L shows "₹X.X Lakh"; ≥ ₹1Cr shows "₹X.XX Crore". Plan 01-03 implements this.
 
 3. **apps/web stub depth for Phase 1**
    What we know: D-01 says create apps/web so Phase 2 can `import from "@sip/core"` on day one.
    What's unclear: Does "stub" mean just `package.json` + bare `next.config.ts`, or a full `pnpm dlx create-next-app@latest` scaffold?
    Recommendation: Run `pnpm dlx create-next-app@latest apps/web` with App Router. The stub should be bootable (`next dev` works) but contain no application pages — just the framework scaffold. This is the cleanest Phase 2 starting point.
+   RESOLVED: Manual authoring chosen over `create-next-app` for deterministic version pinning and supply-chain control (D-01 scaffold decision). 4-file minimal stub: `package.json`, `next.config.ts`, `app/layout.tsx`, `app/page.tsx`. Phase 2 builds the application pages on top. Plan 01-01 implements this.
 
 ---
 

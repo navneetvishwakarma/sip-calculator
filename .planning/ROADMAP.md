@@ -36,15 +36,28 @@
 - SWP (CALC-06): inputs are corpus, monthly withdrawal, return rate; output is months until depletion (or "perpetual" if return rate implies withdrawal is covered by growth indefinitely).
 - INR formatting utility (`₹12.5 Lakh`, `₹2.3 Crore`) is built here in `packages/core` — UX-01 maps to Phase 2 because the observable requirement is in the UI, but the formatter lives here.
 
-**Plans:** 6 plans
+**Plans:** 6 plans in 5 waves
 
-Plans:
+**Wave 1** (parallel — no dependencies):
 - [ ] 01-01-PLAN.md — Monorepo root config + apps/web minimal stub
 - [ ] 01-02-PLAN.md — packages/core skeleton (package.json, tsconfig, vitest, tsup)
+
+**Wave 2** *(blocked on Wave 1 completion)*:
 - [ ] 01-03-PLAN.md — Shared primitives: utils.ts (monthlyRate, formatINR) + schema.ts (zod discriminated union)
+
+**Wave 3** *(blocked on Wave 2 completion)*:
 - [ ] 01-04-PLAN.md — CALC-01 standard SIP, CALC-03 lump sum, CALC-04 step-up SIP (with tests)
+
+**Wave 4** *(blocked on Wave 3 completion)*:
 - [ ] 01-05-PLAN.md — CALC-05 hybrid, CALC-06 SWP, CALC-02 goal-based bisection (with tests)
+
+**Wave 5** *(blocked on Wave 4 completion)*:
 - [ ] 01-06-PLAN.md — Barrel export (index.ts) + ESLint zero-DOM enforcement + full suite gate
+
+**Cross-cutting constraints:**
+- `monthlyRate(annualPct)` is the single rate conversion point — no inline `/ 12 / 100` in any calculator file
+- All calculator functions emit `ScenarioResult` discriminated union validated by `ScenarioResultSchema`
+- Zero-DOM enforcement is two-layer: `tsconfig.json lib: ["ES2022"]` + ESLint `no-restricted-imports`
 
 ---
 
