@@ -69,14 +69,29 @@
 
 ## Traceability
 
-> Filled by roadmapper. Maps each REQ-ID to the phase that delivers it.
-
-| REQ-ID | Phase |
-|--------|-------|
-| CALC-01 through CALC-06 | — |
-| VIZ-01 through VIZ-04 | — |
-| COMP-01 | — |
-| SHARE-01 | — |
-| AUTH-01 through AUTH-03 | — |
-| SAVE-01 through SAVE-04 | — |
-| UX-01 through UX-05 | — |
+| REQ-ID | Phase | Status |
+|--------|-------|--------|
+| CALC-01 | Phase 1 — Calculation Engine | Pending |
+| CALC-02 | Phase 1 — Calculation Engine | Pending |
+| CALC-03 | Phase 1 — Calculation Engine | Pending |
+| CALC-04 | Phase 1 — Calculation Engine | Pending |
+| CALC-05 | Phase 1 — Calculation Engine | Pending |
+| CALC-06 | Phase 1 — Calculation Engine | Pending |
+| VIZ-03 | Phase 2 — Calculator UI | Pending |
+| UX-01 | Phase 2 — Calculator UI | Pending |
+| UX-02 | Phase 2 — Calculator UI | Pending |
+| UX-03 | Phase 2 — Calculator UI | Pending |
+| UX-04 | Phase 2 — Calculator UI | Pending |
+| UX-05 | Phase 2 — Calculator UI | Pending |
+| VIZ-01 | Phase 3 — Visualizations | Pending |
+| VIZ-02 | Phase 3 — Visualizations | Pending |
+| VIZ-04 | Phase 3 — Visualizations | Pending |
+| COMP-01 | Phase 4 — Comparison and Sharing | Pending |
+| SHARE-01 | Phase 4 — Comparison and Sharing | Pending |
+| AUTH-01 | Phase 5 — Authentication | Pending |
+| AUTH-02 | Phase 5 — Authentication | Pending |
+| AUTH-03 | Phase 5 — Authentication | Pending |
+| SAVE-01 | Phase 6 — Saved Scenarios | Pending |
+| SAVE-02 | Phase 6 — Saved Scenarios | Pending |
+| SAVE-03 | Phase 6 — Saved Scenarios | Pending |
+| SAVE-04 | Phase 6 — Saved Scenarios | Pending |
