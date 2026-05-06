@@ -36,6 +36,16 @@
 - SWP (CALC-06): inputs are corpus, monthly withdrawal, return rate; output is months until depletion (or "perpetual" if return rate implies withdrawal is covered by growth indefinitely).
 - INR formatting utility (`₹12.5 Lakh`, `₹2.3 Crore`) is built here in `packages/core` — UX-01 maps to Phase 2 because the observable requirement is in the UI, but the formatter lives here.
 
+**Plans:** 6 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Monorepo root config + apps/web minimal stub
+- [ ] 01-02-PLAN.md — packages/core skeleton (package.json, tsconfig, vitest, tsup)
+- [ ] 01-03-PLAN.md — Shared primitives: utils.ts (monthlyRate, formatINR) + schema.ts (zod discriminated union)
+- [ ] 01-04-PLAN.md — CALC-01 standard SIP, CALC-03 lump sum, CALC-04 step-up SIP (with tests)
+- [ ] 01-05-PLAN.md — CALC-05 hybrid, CALC-06 SWP, CALC-02 goal-based bisection (with tests)
+- [ ] 01-06-PLAN.md — Barrel export (index.ts) + ESLint zero-DOM enforcement + full suite gate
+
 ---
 
 ### Phase 2: Calculator UI
@@ -136,7 +146,7 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Calculation Engine | 0/? | Not started | — |
+| 1. Calculation Engine | 0/6 | Planned | — |
 | 2. Calculator UI | 0/? | Not started | — |
 | 3. Visualizations | 0/? | Not started | — |
 | 4. Comparison and Sharing | 0/? | Not started | — |
