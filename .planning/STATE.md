@@ -1,20 +1,20 @@
 # Project State — SIP Calculator
 
 ## Status
-Phase: Planning complete — Phase 1 ready to execute
+Phase: Executing — Phase 1 in progress (Wave 1 complete)
 Current phase: 1 — Calculation Engine
-Last updated: 2026-05-06
+Last updated: 2026-05-07
 
 ## Project Reference
 See: .planning/PROJECT.md (updated 2026-05-06)
 **Core value:** A retail investor can enter their monthly amount, rate of return, and duration and instantly see their projected corpus with a clear breakdown of invested vs. gains — no sign-up required to try it.
-**Current focus:** Phase 1 planned — 6 plans in 5 waves, ready to execute
+**Current focus:** Phase 1 executing — Wave 1 complete (2/6 plans), Wave 2 next
 
 ## Phases
 
 | # | Phase | Status |
 |---|-------|--------|
-| 1 | Calculation Engine | Ready to execute (6 plans) |
+| 1 | Calculation Engine | In progress — 2/6 plans complete |
 | 2 | Calculator UI | Pending |
 | 3 | Visualizations | Pending |
 | 4 | Comparison and Sharing | Pending |
@@ -50,6 +50,6 @@ None
 
 ## Session Continuity
 
-Last action: Phase 1 planned — 6 PLAN.md files written, verified (2026-05-06). Resolved OQ-1 (SWP yearlySnapshots), OQ-2 (formatINR 10-Lakh threshold), OQ-3 (manual apps/web stub over create-next-app).
-Resume files: .planning/phases/01-calculation-engine/01-01-PLAN.md through 01-06-PLAN.md
-Next action: /clear then /gsd-execute-phase 1
+Last action: Wave 1 complete (2026-05-07) — 01-01 (monorepo scaffold) and 01-02 (@sip/core skeleton) merged. pnpm install successful with Node.js 24.15.0.
+Resume files: .planning/phases/01-calculation-engine/01-03-PLAN.md (Wave 2 next)
+Next action: /gsd-execute-phase 1 (will resume from Wave 2)

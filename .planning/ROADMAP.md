@@ -39,8 +39,8 @@
 **Plans:** 6 plans in 5 waves
 
 **Wave 1** (parallel — no dependencies):
-- [ ] 01-01-PLAN.md — Monorepo root config + apps/web minimal stub
-- [ ] 01-02-PLAN.md — packages/core skeleton (package.json, tsconfig, vitest, tsup)
+- [x] 01-01-PLAN.md — Monorepo root config + apps/web minimal stub
+- [x] 01-02-PLAN.md — packages/core skeleton (package.json, tsconfig, vitest, tsup)
 
 **Wave 2** *(blocked on Wave 1 completion)*:
 - [ ] 01-03-PLAN.md — Shared primitives: utils.ts (monthlyRate, formatINR) + schema.ts (zod discriminated union)
@@ -159,7 +159,7 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Calculation Engine | 0/6 | Planned | — |
+| 1. Calculation Engine | 2/6 | In progress | — |
 | 2. Calculator UI | 0/? | Not started | — |
 | 3. Visualizations | 0/? | Not started | — |
 | 4. Comparison and Sharing | 0/? | Not started | — |
