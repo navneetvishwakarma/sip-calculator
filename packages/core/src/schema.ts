@@ -16,50 +16,9 @@ const SummarySchema = z.object({
   finalCorpus: z.number(),
 });
 
-// ── Per-calculator input-only schemas (no type discriminant — used in result inputs field) ───
-// These are the raw numeric inputs stored inside each result's `inputs` field.
-// They do NOT carry `type` — the parent result schema is already discriminated.
-
-const SIPInputsSchema = z.object({
-  monthlyAmount: z.number().positive(),
-  annualReturnPct: z.number().positive(),
-  years: z.number().int().positive(),
-});
-
-const GoalInputsSchema = z.object({
-  targetCorpus: z.number().positive(),
-  annualReturnPct: z.number().positive(),
-  years: z.number().int().positive(),
-});
-
-const LumpSumInputsSchema = z.object({
-  principal: z.number().positive(),
-  annualReturnPct: z.number().positive(),
-  years: z.number().int().positive(),
-});
-
-const StepUpInputsSchema = z.object({
-  monthlyAmount: z.number().positive(),
-  stepUpPct: z.number().nonnegative(),
-  annualReturnPct: z.number().positive(),
-  years: z.number().int().positive(),
-});
-
-const HybridInputsSchema = z.object({
-  monthlyAmount: z.number().positive(),
-  lumpSumAmount: z.number().positive(),
-  annualReturnPct: z.number().positive(),
-  years: z.number().int().positive(),
-});
-
-const SWPInputsSchema = z.object({
-  corpus: z.number().positive(),
-  monthlyWithdrawal: z.number().positive(),
-  annualReturnPct: z.number().positive(),
-});
-
-// ── Per-calculator Params schemas (with type discriminant — for ScenarioParamsSchema) ───
-// These carry `type` for URL encoding (Phase 4) and DB serialization (Phase 6).
+// ── Per-calculator Params schemas (with type discriminant) ────────────────────
+// Used in ScenarioParamsSchema for URL encoding (Phase 4) and DB serialization (Phase 6).
+// InputsSchema variants derived via .omit({ type: true }) — single source of truth.
 
 const SIPParamsSchema = z.object({
   type: z.literal('sip'),
@@ -106,17 +65,18 @@ const SWPParamsSchema = z.object({
 });
 
 // ── Per-calculator Result schemas ─────────────────────────────────────────────
+// inputs field uses .omit({ type: true }) — no redundant type inside nested inputs
 
 const SIPResultSchema = z.object({
   type: z.literal('sip'),
-  inputs: SIPInputsSchema,
+  inputs: SIPParamsSchema.omit({ type: true }),
   summary: SummarySchema,
   yearlySnapshots: z.array(YearlySnapshotSchema),
 });
 
 const GoalResultSchema = z.object({
   type: z.literal('goal'),
-  inputs: GoalInputsSchema,
+  inputs: GoalParamsSchema.omit({ type: true }),
   monthlyRequired: z.number().positive(),
   summary: SummarySchema,
   yearlySnapshots: z.array(YearlySnapshotSchema),
@@ -124,21 +84,21 @@ const GoalResultSchema = z.object({
 
 const LumpSumResultSchema = z.object({
   type: z.literal('lumpsum'),
-  inputs: LumpSumInputsSchema,
+  inputs: LumpSumParamsSchema.omit({ type: true }),
   summary: SummarySchema,
   yearlySnapshots: z.array(YearlySnapshotSchema),
 });
 
 const StepUpResultSchema = z.object({
   type: z.literal('stepup'),
-  inputs: StepUpInputsSchema,
+  inputs: StepUpParamsSchema.omit({ type: true }),
   summary: SummarySchema,
   yearlySnapshots: z.array(YearlySnapshotSchema),
 });
 
 const HybridResultSchema = z.object({
   type: z.literal('hybrid'),
-  inputs: HybridInputsSchema,
+  inputs: HybridParamsSchema.omit({ type: true }),
   summary: SummarySchema,
   yearlySnapshots: z.array(YearlySnapshotSchema),
 });
@@ -146,7 +106,7 @@ const HybridResultSchema = z.object({
 // SWP: no summary, optional yearlySnapshots for Phase 3 drawdown chart (OQ-1 resolved)
 const SWPResultSchema = z.object({
   type: z.literal('swp'),
-  inputs: SWPInputsSchema,
+  inputs: SWPParamsSchema.omit({ type: true }),
   monthsToDepletion: z.union([z.number().int().positive(), z.literal('perpetual')]),
   yearlySnapshots: z.array(YearlySnapshotSchema).optional(),
 });
