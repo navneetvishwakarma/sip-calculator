@@ -43,7 +43,7 @@
 - [x] 01-02-PLAN.md — packages/core skeleton (package.json, tsconfig, vitest, tsup)
 
 **Wave 2** *(blocked on Wave 1 completion)*:
-- [ ] 01-03-PLAN.md — Shared primitives: utils.ts (monthlyRate, formatINR) + schema.ts (zod discriminated union)
+- [x] 01-03-PLAN.md — Shared primitives: utils.ts (monthlyRate, formatINR) + schema.ts (zod discriminated union)
 
 **Wave 3** *(blocked on Wave 2 completion)*:
 - [ ] 01-04-PLAN.md — CALC-01 standard SIP, CALC-03 lump sum, CALC-04 step-up SIP (with tests)
@@ -159,7 +159,7 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Calculation Engine | 2/6 | In progress | — |
+| 1. Calculation Engine | 3/6 | In progress | — |
 | 2. Calculator UI | 0/? | Not started | — |
 | 3. Visualizations | 0/? | Not started | — |
 | 4. Comparison and Sharing | 0/? | Not started | — |
