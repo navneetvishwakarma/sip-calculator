@@ -3,6 +3,7 @@ node_modules/
 dist/
 .turbo/
 *.local
+.claude/settings.local.json
 .env
 .env.*
 !.env.example
