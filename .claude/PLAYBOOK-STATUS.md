@@ -1,6 +1,6 @@
 # Playbook Status
 
-Progress: 2 done · 1 active · 14 remaining (of 20)
+Progress: 4 done · 1 active · 12 remaining (of 20)
 
 | Status | ID    | Name                            |
 |--------|-------|---------------------------------|
@@ -8,9 +8,9 @@ Progress: 2 done · 1 active · 14 remaining (of 20)
 | [x]    | B-01  | [S1] Product Discovery          |
 | [-]    | B-02  | [S1] Validation Interview (opt) |
 | [-]    | B-03  | [S2] Customer Demand Valid.     |
-| [>]    | B-04  | [S3A] PRD Writing               |
-| [ ]    | B-05a | [S3A] UX Sprint                 |
-| [ ]    | B-05b | [S3A] Architecture Sprint       |
+| [x]    | B-04  | [S3A] PRD Writing               |
+| [x]    | B-05a | [S3A] UX Sprint                 |
+| [>]    | B-05b | [S3A] Architecture Sprint       |
 | [ ]    | B-06  | [S3A] Security Validation       |
 | [ ]    | B-07  | [S3A] CI/GTM/Tests/Tracking     |
 | [-]    | B-08  | [S3A] Sales Strategy (cnd)      |
